@@ -1,0 +1,93 @@
+@use '../../styles/variables' as v;
+
+.side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* ---------- Text ---------- */
+
+.side h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.side p {
+  color: v.$muted;
+  line-height: 1.7;
+}
+
+.side .content-title {
+  color: v.$muted;
+  line-height: 1.7;
+  font-size: 80px;
+}
+
+/* ---------- Image ---------- */
+
+.side .content-img {
+  flex: 1;
+  max-width: 580px;
+  max-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 420px;
+    max-height: 420px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+}
+.side:hover .content-img {
+  transform: scale(1.03);
+}
+
+/* ---------- Button ---------- */
+
+.side .content-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+
+  min-width: 180px;
+  min-height: 48px;
+
+  background-image: url('../../assets/images/buttonbg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #1e90ff;
+  }
+}
+

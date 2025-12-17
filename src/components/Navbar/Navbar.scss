@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(14, 14, 17, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.navbar__right {
+  display: flex;
+  gap: 2rem;
+
+  button {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 4px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #5eead4;
+      transition: width 0.3s ease;
+    }
+
+    &.active {
+      color: #eaeaf0;
+    }
+
+    &.active::after {
+      width: 100%;
+    }
+  }
+}

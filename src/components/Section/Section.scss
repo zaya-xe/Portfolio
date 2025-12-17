@@ -1,0 +1,24 @@
+.section {
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section__top {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+@media (max-width: 900px) {
+  .section__body {
+    grid-template-columns: 1fr;
+  }
+}

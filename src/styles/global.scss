@@ -1,0 +1,12 @@
+@use 'variables' as v;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: v.$bg;
+  color: v.$text;
+}

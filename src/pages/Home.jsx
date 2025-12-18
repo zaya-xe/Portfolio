@@ -15,7 +15,7 @@ import rwalkerBg from "../assets/images/rwalkerBg.png"
 import heuristicBg from "../assets/images/heuBg.png"
 import chess2Bg from "../assets/images/chess2Bg.png"
 import divider from "../assets/images/divider.png"
-
+import './Home.scss'
 
 export default function Home() {
   return (

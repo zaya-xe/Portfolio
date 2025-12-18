@@ -43,9 +43,9 @@ export default function Navbar() {
             onClick={() => scrollTo(section)}
             className={active === section ? 'active' : ''}
           >
-            {section === 'about' && 'About me'}
+            {section === 'about' && 'About Me'}
             {section === 'projects' && 'Projects'}
-            {section === 'contact' && 'Contact me'}
+            {section === 'contact' && 'Contact Me'}
           </button>
         ))}
       </div>

@@ -10,6 +10,13 @@
   z-index: 100;
 }
 
+.navbar__left {
+  font-style: Bold;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
 .navbar__right {
   display: flex;
   gap: 2rem;
@@ -22,15 +29,19 @@
     cursor: pointer;
     position: relative;
     padding-bottom: 4px;
+    font-style: Medium;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0%;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: 8px;
       width: 0;
       height: 2px;
-      background: #5eead4;
+      background: #ffffff;
       transition: width 0.3s ease;
     }
 

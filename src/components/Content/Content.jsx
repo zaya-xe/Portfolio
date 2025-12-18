@@ -1,24 +1,24 @@
-import './Content.scss';
+import "./Content.scss";
 
 export default function Content({ type, value, url }) {
-  if (type === 'image') {
+  if (type === "image") {
     return <img className="content-img" src={value} alt="" />;
   }
 
-  if (type === 'button') {
+  if (type === "button") {
     const handleClick = () => {
       if (!url) return;
-      window.open(url, '_blank', 'noopener,noreferrer');
+      window.open(url, "_blank", "noopener,noreferrer");
     };
 
     return (
-      <button className="content-btn" onClick={handleClick}>
+      <button className={`content-btn ${value}`} onClick={handleClick}>
         {value}
       </button>
     );
   }
 
-  if (type === 'title') {
+  if (type === "title") {
     return <p className="content-title">{value}</p>;
   }
 

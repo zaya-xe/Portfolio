@@ -54,3 +54,21 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar__left {
+    font-size: 1.5rem;
+  }
+
+  .navbar__right {
+    gap: 1rem;
+  }
+
+  .navbar__right button {
+    font-size: 1rem;
+  }
+}

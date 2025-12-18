@@ -77,12 +77,11 @@
   padding: 0.75rem 1.25rem;
   background: transparent;
   border: none;
-  border-radius: 999px;
   color: #fff;
   cursor: pointer;
 
-  min-width: 180px;
-  min-height: 48px;
+  min-width: 200px;
+  min-height: 60px;
 
   background-image: url("../../assets/images/buttonbg.png");
   background-size: cover;
@@ -102,5 +101,52 @@
     border-radius: 50%;
     object-fit: cover;
     background-color: #1e90ff;
+  }
+}
+
+@media (max-width: 900px) {
+  .side {
+    align-items: center;
+    text-align: center;
+  }
+
+  .side h3,
+  .side p,
+  .side .content-title {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .side h3 {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  }
+
+  .side .content-title {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  }
+
+  .side p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  .side .content-img {
+    max-width: 100%;
+    max-height: none;
+  }
+
+  .side .content-img img {
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .side .content-btn {
+    min-width: 160px;
+    min-height: 44px;
+    font-size: 0.95rem;
   }
 }

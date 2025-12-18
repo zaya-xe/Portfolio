@@ -6,7 +6,7 @@ export default function Section({ id, bgImage, topContent, lhs, rhs }) {
     : {};
 
   return (
-    <section className="section" id={id} style={sectionStyle}>
+    <section className={`section ${id}`} id={id} style={sectionStyle}>
       {topContent && (
         <div className="section__top">
           {topContent}

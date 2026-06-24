@@ -1,0 +1,152 @@
+@use "../../styles/variables" as v;
+
+.side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* ---------- Text ---------- */
+
+.side h3 {
+  align-self: center;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 80px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-bottom: 1rem;
+  width: 614px;
+}
+
+.side p {
+  align-self: center;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  width: 614px;
+}
+
+.side .content-title {
+  align-self: center;
+  color: v.$muted;
+  line-height: 1.7;
+  font-size: 80px;
+  width: 614px;
+}
+
+/* ---------- Image ---------- */
+
+.side .content-img {
+  flex: 1;
+  align-self: center;
+  max-width: 580px;
+  max-height: 381px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-width: 420px;
+    max-height: 420px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+}
+.content-img:hover {
+  transform: scale(1.03);
+}
+
+/* ---------- Button ---------- */
+
+.side .content-btn {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+
+  min-width: 200px;
+  min-height: 60px;
+
+  background-image: url("../../assets/images/buttonbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #1e90ff;
+  }
+}
+
+@media (max-width: 900px) {
+  .side {
+    align-items: center;
+    text-align: center;
+  }
+
+  .side h3,
+  .side p,
+  .side .content-title {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .side h3 {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  }
+
+  .side .content-title {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+  }
+
+  .side p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  .side .content-img {
+    max-width: 100%;
+    max-height: none;
+  }
+
+  .side .content-img img {
+    max-width: 280px;
+    max-height: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .side .content-btn {
+    min-width: 160px;
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+}

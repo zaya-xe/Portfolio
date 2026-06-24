@@ -4,7 +4,7 @@ import Section from "../components/Section/Section";
 import LHS from "../components/LHS/LHS";
 import RHS from "../components/RHS/RHS";
 import Content from "../components/Content/Content";
-import aboutImage from "../assets/images/about.png";
+import aboutImage from "../assets/images/paper_wireframes.png";
 import chess2Title from "../assets/images/Chess2Logo.png";
 import chess2Img1 from "../assets/images/chess 1.png";
 import chess2Img2 from "../assets/images/chess 2.png";
@@ -30,18 +30,18 @@ export default function Home() {
           id="about"
           lhs={
             <LHS>
-              <Content type="image" value={aboutImage} />
+              <Content customClassName="wireframe_cutouts" type="image" value={aboutImage} />
             </LHS>
           }
           rhs={
             <RHS headerText="Hi,">
               <Content
                 type="text"
-                value="I am a UX Designer specialising in game experiences, with a strong focus on research-driven design."
+                value="I am Mawrah, a UX Designer looking to make a strong impact through accessible design."
               />
               <Content
                 type="text"
-                value="I use player research, usability testing, and iterative prototyping to understand player behaviour, identify pain points, and create engaging, intuitive gameplay experiences."
+                value="I use research, usability testing, and iterative prototyping to understand user behaviour, keeping users at the heart of every design."
               />
             </RHS>
           }
@@ -97,15 +97,15 @@ export default function Home() {
             <RHS>
               <Content
                 type="text"
-                value="To understand how users may perceive a famous platform that is used for downloading and accessing thousands of games on a daily basis, I conducted a heuristic evaluation on the Steam mobile app based on Nielsen's 10 heuristics for user interface design."
+                value="To understand how users may perceive a famous platform that is used for downloading and accessing thousands of games on a daily basis, a heuristic evaluation was conducted on the Steam mobile app based on Nielsen's 10 heuristics for user interface design."
               />
               <Content
                 type="text"
-                value="Based on my findings, I redesigned the app to make it more intuitive for users."
+                value="Based on the findings, the application was redesigned to make it more intuitive for users."
               />
               <Content
                 type="text"
-                value="The entire documentation for the heuristic evaluation is available below:"
+                value="The documentation for the heuristic evaluation is available below:"
               />
               <Content
                 type="button"

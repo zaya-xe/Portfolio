@@ -1,8 +1,8 @@
 import "./Content.scss";
 
-export default function Content({ type, value, url }) {
+export default function Content({ type, customClassName, value, url }) {
   if (type === "image") {
-    return <img className="content-img" src={value} alt="" />;
+    return <img className={`content-img ${customClassName}`} src={value} alt="" />;
   }
 
   if (type === "button") {

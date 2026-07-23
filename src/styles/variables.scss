@@ -1,0 +1,29 @@
+// ---------------------------------------------
+// Design tokens — glass / crystal portfolio theme
+// ---------------------------------------------
+
+// Surface
+$bg: #000000;
+
+// Text
+$white: #f2f3f8;
+$muted: #9aa0ad;
+$body-text: #c8cbd4;
+
+// Accent — periwinkle / ice blue, echoes the glass shards
+$accent: #72A6FE;
+$accent-soft: rgba(111, 141, 255, 0.35);
+$accent-glow: rgba(111, 141, 255, 0.18);
+
+// Borders
+$border: rgba(255, 255, 255, 0.08);
+$border-accent: rgba(111, 141, 255, 0.45);
+
+// Type
+$font-display: "Inria Serif", "Georgia", serif;
+$font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+// Layout
+$max-width: 1200px;
+$radius-sm: 8px;
+$radius-md: 14px;

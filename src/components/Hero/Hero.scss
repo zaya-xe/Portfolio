@@ -1,0 +1,136 @@
+@use "../../styles/variables" as v;
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+}
+
+.hero__copy {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: 5vw;
+}
+
+.hero__eyebrow {
+  font-family: v.$font-body;
+  font-size: 16px;
+  font-weight: 500;
+  color: v.$accent;
+  margin: 0 0 16px;
+}
+
+.hero__name {
+  font-family: v.$font-display;
+  font-weight: 700;
+  font-size: 48px;
+  color: v.$white;
+  margin: 0 0 32px;
+}
+
+.hero__description {
+  font-family: v.$font-body;
+  font-size: 16px;
+  font-weight: 500;
+  color: v.$white;
+  margin: 0 0 40px;
+}
+
+.hero__resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: 4px;
+  border: 1px solid #B6B6B6;
+  background: #72A6FE;
+  color: #000000;
+  font-family: v.$font-body;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 4px 4px 18px 12px #8bb9ff2c;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  transform-origin: top left;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.hero__role-label {
+  font-family: v.$font-body;
+  font-size: 16px;
+  font-weight: 500;
+  color: v.$accent;
+  margin: 48px 0 12px;
+}
+
+.hero__roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+}
+
+.role-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+  min-width: 224px;
+  min-height: 232px;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  border: none;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.role-card__icon {
+  color: v.$accent;
+  width: 20%;
+}
+
+.role-card__icon-img {
+  width: 100%;
+  height: auto;
+}
+
+.role-card__label {
+  font-family: v.$font-body;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: v.$white;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 7rem 1.5rem 3rem;
+  }
+
+  .hero__copy {
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .hero__name {
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__roles {
+    grid-template-columns: 1fr 1fr;
+  }
+}

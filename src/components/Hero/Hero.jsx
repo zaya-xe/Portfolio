@@ -44,7 +44,7 @@ export default function Hero() {
           A seasoned UXer, crafting intuitive and accessible<br/>interfaces, to make the world a better place.
         </p>
 
-        <a className="hero__resume-btn" href="/Mawrah_CV.pdf" target="_blank" rel="noopener noreferrer">
+        <a className="hero__resume-btn" href="./src/assets/Mawrah_CV.pdf" target="_blank" rel="noopener noreferrer">
           View resume
           <svg
                     width="14"

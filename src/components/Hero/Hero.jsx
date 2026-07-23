@@ -5,6 +5,7 @@ import rolebg3 from "../../assets/rolebg3.svg";
 import role1 from "../../assets/role1.svg";
 import role2 from "../../assets/role2.svg";
 import role3 from "../../assets/role3.svg";
+import resumePDF from "../../assets/Mawrah_CV.pdf";
 
 const ROLES = [
   {
@@ -44,7 +45,7 @@ export default function Hero() {
           A seasoned UXer, crafting intuitive and accessible<br/>interfaces, to make the world a better place.
         </p>
 
-        <a className="hero__resume-btn" href="./src/assets/Mawrah_CV.pdf" target="_blank" rel="noopener noreferrer">
+        <a className="hero__resume-btn" href={resumePDF} target="_blank" rel="noopener noreferrer">
           View resume
           <svg
                     width="14"

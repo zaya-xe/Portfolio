@@ -12,7 +12,7 @@ const GAMES = [
     image: bloomOrDoom,
     description:
       "Bloom or Doom is a 3-day game jam project, featured in the 'Games and Animation Digest' by Kingston University. The objective of the 2-player game is to balance the Sun and Moon to save a dying planet, handle mishaps and use the NFC power-up to your advantage.",
-    docUrl: "#",
+    docUrl: "https://drive.google.com/drive/folders/1wQc11dHf73zuvE_fBKyDMFg2GIVGWanl?usp=drive_link",
     buttonLabel: "Download APK",
   },
   {
@@ -30,8 +30,8 @@ const GAMES = [
     title: "Reel Reveal",
     image: reelReveal,
     description:
-      "Reel Reveal is a casual word-guessing game where players uncover a hidden movie title using a limited number of lives. The gameplay emphasizes quick thinking, logical deduction, and replayability across three progressively challenging difficulty levels.",
-    docUrl: "#",
+      "Reel Reveal is a work-in-progress casual word-guessing game where players uncover a hidden movie title using a limited number of lives. The gameplay emphasizes quick thinking, logical deduction, and replayability across three progressively challenging difficulty levels.",
+    docUrl: "https://drive.google.com/drive/folders/18Y0bx_XE3tR7CU940ZdtkuK9UOXMmvRt?usp=sharing",
     buttonLabel: "Download APK",
   },
 ];

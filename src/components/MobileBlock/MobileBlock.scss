@@ -1,0 +1,41 @@
+@use "../../styles/variables" as v;
+
+.mobile-block {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #000;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .mobile-block__content {
+    max-width: 340px;
+  }
+
+  .mobile-block__title {
+    font-family: v.$font-display;
+    color: v.$white;
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .mobile-block__message {
+    font-family: v.$font-body;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .portfolio-container {
+    display: none;
+  }
+}

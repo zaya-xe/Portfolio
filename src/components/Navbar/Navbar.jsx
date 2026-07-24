@@ -9,7 +9,7 @@ const NAV_ITEMS = [
     hasCaret: true,
     dropdown: [
       { id: "games", label: "Games" },
-      { id: "product", label: "Product" },
+      { id: "product", label: "Products" },
     ],
   },
   // { id: "certifications", label: "Certifications" },

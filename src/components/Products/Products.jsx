@@ -3,8 +3,18 @@ import "./Products.scss";
 import shardsBG3 from "../../assets/shardsBG3.svg";
 import steamRevamp from "../../assets/steamRevamp.png";
 import spectraAR from "../../assets/spectraAR.png";
+import nudgeAI from "../../assets/nudgeAI.png";
 
 const PRODUCTS = [
+  {
+    id: "nudge-ai",
+    title: "Nudge AI",
+    image: nudgeAI,
+    description:
+      "Nudge is a Figma co-pilot which assists designers and explores how integrated, context-aware support within the design environment can improve learning, enhance usability, and enable users to work more confidently and efficiently without relying heavily on external guidance.",
+    docUrl: "https://www.figma.com/design/KDdRueDzm6EBXPduJvEve6/K2461416_UX-in-Emerging-Technology?node-id=0-1&t=uINIiH080hhk7wiM-1",
+    buttonLabel: "View Project",
+  },
   {
     id: "steam-revamp",
     title: "Steam Revamp",

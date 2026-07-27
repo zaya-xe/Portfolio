@@ -31,12 +31,12 @@
 <stop offset="1" stop-color="#72A6FE" stop-opacity="0.8"/>
 </radialGradient>
 <linearGradient id="paint1_linear_1409_453" x1="20" y1="20" x2="321" y2="316" gradientUnits="userSpaceOnUse">
-<stop stop-color="#96BDFE"/>
-<stop offset="0.120192" stop-color="white"/>
-<stop offset="0.235577" stop-color="#72A6FE"/>
+<stop stop-color="#2F4A6B"/>
+<stop offset="0.120192" stop-color="#92AFAF"/>
+<stop offset="0.235577" stop-color="#1A293A"/>
 <stop offset="0.413362" stop-color="#E7F0FF"/>
-<stop offset="0.610577" stop-color="#81AFFE"/>
-<stop offset="0.793269" stop-color="#91BAFE"/>
+<stop offset="0.610577" stop-color="#1A293A"/>
+<stop offset="0.793269" stop-color="#6F8E9C"/>
 <stop offset="0.918269" stop-color="#EAF2FF"/>
 </linearGradient>
 </defs>

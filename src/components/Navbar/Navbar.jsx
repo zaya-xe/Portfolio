@@ -12,7 +12,7 @@ const NAV_ITEMS = [
       { id: "product", label: "Products" },
     ],
   },
-  // { id: "certifications", label: "Certifications" },
+  { id: "certifications", label: "Certifications" },
   // { id: "contact", label: "Let's talk" },
 ];
 

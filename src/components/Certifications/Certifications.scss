@@ -1,0 +1,127 @@
+@use "../../styles/variables" as v;
+
+.certifications {
+  position: relative;
+  z-index: 0; // NEW — forces a local stacking context so ::before (z-index: -1) stays contained here, not behind the whole page
+  min-height: 100vh;
+  padding: 100px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: v.$white;
+  overflow: hidden;
+}
+
+.certifications__heading {
+  font-family: v.$font-body;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 60px;
+}
+
+.certifications__track {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.certifications__card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &.is-active {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  }
+}
+
+.certifications__controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 420px; // fixed width — arrows anchor to this, unaffected by label text length
+}
+
+.certifications__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, v.$accent, #4a5fd6);
+  color: v.$white;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+
+  &--prev {
+    left: 0;
+  }
+
+  &--next {
+    right: 0;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.certifications__label {
+  text-align: center;
+  width: 100%;
+  padding: 0 40px; 
+}
+
+.certifications__title {
+  font-family: v.$font-body;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+
+.certifications__org {
+  font-family: v.$font-body;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .certifications__track {
+    max-width: 260px;
+    height: 200px;
+  }
+
+  .certifications__card:not(.is-active) {
+    display: none;
+  }
+}

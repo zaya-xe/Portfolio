@@ -50,6 +50,12 @@
   }
 }
 
+/* NEW: fixes horizontal scrollbar without breaking position: sticky elsewhere on the page */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
 }
@@ -108,3 +114,48 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* NEW: shard background drift animation, shared across all sections that use it */
+.page-bg,
+.games,
+.products,
+.certifications {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-bg::before,
+.games::before,
+.products::before,
+.certifications::before {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes shard-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-1.5%, 1%) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .page-bg::before,
+  .games::before,
+  .products::before,
+  .certifications::before {
+    animation: shard-drift 20s ease-in-out infinite;
+  }
+} */

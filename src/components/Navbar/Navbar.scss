@@ -5,47 +5,48 @@
   align-items: center;
   align-self: center;
   justify-content: space-between;
-  padding: 40px;
-  border-radius: 0px 0px 4px 4px;
+  padding: 1.7778rem;
+  border-radius: 0 0 0.2222rem 0.2222rem;
   position: relative;
   top: 0;
-  width: 72%;
+  width: 64%;
   margin: 0 auto;
   background: #0000000f;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(0.2222rem);
   z-index: 10;
 }
 
 .navbar__left {
   font-family: v.$font-display;
-  font-weight: 700;
-  font-size: 40px;
+  font-weight: 600;
+  font-size: 2.2222rem;
   color: v.$white;
 }
 
 .navbar__dot {
   color: v.$accent;
-  font-size: 64px;
+  font-size: 3.1111rem;
 }
 
 .navbar__right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0.8889rem;
 
   button {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.4444rem;
     background: none;
     border: none;
     color: v.$white;
     font-family: v.$font-body;
-    font-size: 0.95rem;
+    font-size: 0.8889rem;
+    letter-spacing: 0.0278rem;
     font-weight: 400;
     cursor: pointer;
     position: relative;
-    padding-bottom: 8px;
+    padding-bottom: 0.4444rem;
     transition: color 0.3s ease;
 
     &:hover {
@@ -62,8 +63,8 @@
       left: 0;
       bottom: 0;
       width: 0;
-      height: 6px;
-      border-radius: 12px;
+      height: 0.2222rem;
+      border-radius: 0.6667rem;
       background: v.$accent;
       transition: width 0.3s ease;
     }
@@ -92,17 +93,17 @@
 // NEW: the dropdown panel itself
 .navbar__dropdown {
   position: absolute;
-  top: calc(100% + 16px);
+  top: calc(100% + 0.8889rem);
   left: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 12px 16px;
-  border-radius: 8px;
+  gap: 0.2222rem;
+  padding: 0.6667rem 0.8889rem;
+  border-radius: 0.4444rem;
   background: rgba(8, 9, 12, 0.95);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  min-width: 160px;
+  backdrop-filter: blur(0.7778rem);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.08);
+  min-width: 8.8889rem;
   z-index: 200;
 }
 
@@ -113,7 +114,7 @@
   color: v.$white;
   font-family: v.$font-body;
   font-size: 0.9rem;
-  padding: 8px 4px;
+  padding: 0.4444rem 0.2222rem;
   cursor: pointer;
   text-align: left;
   transition: color 0.15s ease;

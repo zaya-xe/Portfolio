@@ -8,7 +8,7 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  padding: 100px 80px;
+  padding: 5.5556rem 4.4444rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -20,7 +20,7 @@
 
 .products__layout {
   display: flex;
-  gap: 100px;
+  gap: 5.5556rem;
   flex: 1;
   min-height: 0;
 }
@@ -36,7 +36,7 @@
   font-family: v.$font-body;
   font-weight: 700;
   font-size: 1.1rem;
-  margin-bottom: 40px;
+  margin-bottom: 2.2222rem;
 }
 
 .products__nav {
@@ -45,25 +45,25 @@
   display: flex;
   align-self: center;
   flex-direction: column;
-  gap: 32px;
-  padding-left: 28px;
+  gap: 1.7778rem;
+  padding-left: 1.5556rem;
 }
 
 .products__nav-line {
   position: absolute;
   left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 1px;
+  top: 0.2222rem;
+  bottom: 0.2222rem;
+  width: 0.0556rem;
   background: rgba(255, 255, 255, 0.15);
 }
 
 .products__nav-indicator {
   position: absolute;
-  left: -3px;
-  top: 8px;
-  width: 8px;
-  height: 8px;
+  left: -0.1667rem;
+  top: 0.4444rem;
+  width: 0.4444rem;
+  height: 0.4444rem;
   border-radius: 50%;
   background: v.$accent;
   transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
@@ -108,7 +108,7 @@
   text-align: center;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(16px);
+  transform: translateY(0.8889rem);
   transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
   pointer-events: none;
 
@@ -124,13 +124,13 @@
   font-family: v.$font-body;
   font-weight: 600;
   font-size: 1.8rem;
-  margin-bottom: 48px;
+  margin-bottom: 2.6667rem;
 }
 
 .products__mockup {
   width: 100%;
-  max-width: 480px;
-  margin-bottom: 24px;
+  max-width: 26.6667rem;
+  margin-bottom: 1.3333rem;
 
   img {
     width: 100%;
@@ -143,33 +143,34 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 640px;
+  max-width: 35.5556rem;
   margin: 0;
 }
 
 .products__panel-description {
-  max-width: 600px;
+  max-width: 33.3333rem;
   font-family: v.$font-body;
   text-align: left;
-  font-size: 16px;
+  font-size: 0.8889rem;
   line-height: 1.6;
   color: #ffffff;
-  margin-bottom: 36px;
+  margin-bottom: 2rem;
 }
 
 .products__case-study-btn {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  gap: 8px;
-  padding: 12px 28px;
-  border-radius: 4px;
+  gap: 0.4444rem;
+  padding: 0.6667rem 1.5556rem;
+  border-radius: 0.2222rem;
   background: v.$accent;
   color: #000;
   font-family: v.$font-body;
   font-weight: 500;
   font-size: 0.95rem;
   text-decoration: none;
+  box-shadow: 0.2222rem 0.2222rem 1rem 0.6667rem #8bb9ff2c;
   transition: transform 0.15s ease;
   transform-origin: top left;
 
@@ -180,11 +181,11 @@
 
 @media (max-width: 900px) {
   .products {
-    padding: 60px 24px;
+    padding: 3.75rem 1.5rem;
   }
 
   .products__layout {
     flex-direction: column;
-    gap: 32px;
+    gap: 2rem;
   }
 }

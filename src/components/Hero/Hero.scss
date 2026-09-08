@@ -4,53 +4,53 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 40px;
+  padding: 2.2222rem;
 }
 
 .hero__copy {
-  max-width: 800px;
+  max-width: 44.4444rem;
   margin-left: auto;
   margin-right: 5vw;
 }
 
 .hero__eyebrow {
   font-family: v.$font-body;
-  font-size: 16px;
+  font-size: 0.8889rem;
   font-weight: 500;
   color: v.$accent;
-  margin: 0 0 16px;
+  margin: 0 0 0.8889rem;
 }
 
 .hero__name {
   font-family: v.$font-display;
-  font-weight: 700;
-  font-size: 48px;
+  font-weight: 600;
+  font-size: 2.2222rem;
   color: v.$white;
-  margin: 0 0 32px;
+  margin: 0 0 1.7778rem;
 }
 
 .hero__description {
   font-family: v.$font-body;
-  font-size: 16px;
+  font-size: 0.8889rem;
   font-weight: 500;
   color: v.$white;
-  margin: 0 0 40px;
+  margin: 0 0 2.2222rem;
 }
 
 .hero__resume-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 32px;
-  border-radius: 4px;
-  border: 1px solid #B6B6B6;
+  gap: 0.4444rem;
+  padding: 0.6667rem 1.7778rem;
+  border-radius: 0.2222rem;
+  border: 0.0556rem solid #B6B6B6;
   background: #72A6FE;
   color: #000000;
   font-family: v.$font-body;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 0.8889rem;
   text-decoration: none;
-  box-shadow: 4px 4px 18px 12px #8bb9ff2c;
+  box-shadow: 0.2222rem 0.2222rem 1rem 0.6667rem #8bb9ff2c;
   transition: transform 0.15s ease, box-shadow 0.2s ease;
   transform-origin: top left;
 
@@ -65,25 +65,25 @@
 
 .hero__role-label {
   font-family: v.$font-body;
-  font-size: 16px;
+  font-size: 0.8889rem;
   font-weight: 500;
   color: v.$accent;
-  margin: 48px 0 12px;
+  margin: 2.6667rem 0 0.6667rem;
 }
 
 .hero__roles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0px;
+  gap: 0;
 }
 
 .role-card {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 12px;
-  min-width: 224px;
-  min-height: 232px;
+  gap: 0.6667rem;
+  min-width: 12.4444rem;
+  min-height: 12.8889rem;
   align-items: center;
   background-size: cover;
   background-position: center;
@@ -95,16 +95,12 @@
   font: inherit;
   background-color: transparent; 
 
-  &:focus-visible {
-    outline: 2px solid v.$accent;
-    outline-offset: 2px;
-  }
 }
 
 .role-card.is-flipped .role-card__face,
 .role-card:hover .role-card__face {
   opacity: 0;
-  transform: translateY(-24px);
+  transform: translateY(-1.3333rem);
 }
 
 .role-card.is-flipped .role-card__description,
@@ -129,8 +125,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 0 24px;
+  gap: 0.6667rem;
+  padding: 0 1.3333rem;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
@@ -140,21 +136,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 28px;
+  padding: 0 1.5556rem;
   margin: 0;
   font-family: v.$font-body;
-  font-size: 14px;
+  font-size: 0.7778rem;
   line-height: 1.5;
   color: v.$white;
   text-align: left;
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(1.3333rem);
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .role-card:hover .role-card__face {
   opacity: 0;
-  transform: translateY(-24px);
+  transform: translateY(-1.3333rem);
 }
 
 .role-card:hover .role-card__description {
@@ -174,7 +170,7 @@
 
 .role-card__label {
   font-family: v.$font-body;
-  font-size: 16px;
+  font-size: 0.8889rem;
   text-align: left;
   font-weight: 500;
   line-height: 1.25;
@@ -192,7 +188,7 @@
   }
 
   .hero__name {
-    font-size: 2.1rem;
+    font-size: 2.5rem;
   }
 }
 

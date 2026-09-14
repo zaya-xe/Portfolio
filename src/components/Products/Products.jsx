@@ -89,7 +89,7 @@ export default function Products() {
       <section
         id="product"
         className="products"
-        style={{ backgroundImage: `url("${shardsBG3}")` }}
+        style={{ "--bg-image": `url("${shardsBG3}")` }}
       >
         <div className="products__layout">
           <div className="products__nav-column">

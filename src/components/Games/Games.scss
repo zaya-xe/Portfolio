@@ -7,14 +7,12 @@
 .games {
   position: sticky;
   top: 0;
+  z-index: 0; // forces a local stacking context so ::before (z-index: -1) stays contained here, not behind the whole page
   height: 100vh;
   padding: 5.5556rem 4.4444rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   color: v.$white;
 }
 

@@ -57,7 +57,7 @@ export default function Hero() {
         </p>
 
         <a className="hero__resume-btn" href={resumePDF} target="_blank" rel="noopener noreferrer">
-          View resume
+          View CV
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

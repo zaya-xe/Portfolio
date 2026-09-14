@@ -14,7 +14,7 @@ export default function Home() {
       <MobileBlock />
 
     <div className="portfolio-container">
-      <div className="page-bg" style={{ backgroundImage: `url(${shardsBG})` }}>
+      <div className="page-bg" style={{ "--bg-image": `url(${shardsBG})` }}>
         <div className="navbar-container">
           <Navbar />
         </div>

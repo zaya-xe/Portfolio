@@ -90,7 +90,7 @@ export default function Games() {
       <section
         id="games"
         className="games"
-        style={{ backgroundImage: `url("${shardsBG2}")` }}
+        style={{ "--bg-image": `url("${shardsBG2}")` }}
       >
 
         <div className="games__layout">

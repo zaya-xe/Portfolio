@@ -15,7 +15,7 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
+  font: 112.5%/145% var(--sans);
   letter-spacing: 0.01rem;
   color-scheme: light dark;
   color: var(--text);
@@ -26,7 +26,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   @media (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 100%;
   }
 }
 
@@ -144,19 +144,25 @@ code {
   0% {
     transform: translate(0, 0) scale(1);
   }
+  25% {
+    transform: translate(-1.5%, -1.2%) scale(1.015);
+  }
   50% {
-    transform: translate(-1.5%, 1%) scale(1.03);
+    transform: translate(-0.5%, 1.6%) scale(1.03);
+  }
+  75% {
+    transform: translate(1.2%, 0.4%) scale(1.015);
   }
   100% {
     transform: translate(0, 0) scale(1);
   }
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .page-bg::before,
   .games::before,
   .products::before,
   .certifications::before {
     animation: shard-drift 20s ease-in-out infinite;
   }
-} */
+}

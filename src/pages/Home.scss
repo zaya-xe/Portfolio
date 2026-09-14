@@ -14,12 +14,14 @@ body {
 
   .page-bg {
     position: relative;
+    z-index: 0; // forces a local stacking context so ::before (z-index: -1) stays contained here, not behind the whole page
     min-height: 100vh;
     min-width: 100vw;
-    background-image: var(--page-bg-image);
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100% auto;
+
+    &::before {
+      background-position: top center;
+      background-size: 100% auto;
+    }
   }
 
   .navbar-container {

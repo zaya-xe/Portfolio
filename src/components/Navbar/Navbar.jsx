@@ -52,6 +52,32 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
+  // keep the highlighted nav item in sync with whichever section is
+  // actually in view while scrolling, instead of only updating on click
+  useEffect(() => {
+    const sectionIds = NAV_ITEMS.flatMap((item) =>
+      item.dropdown ? item.dropdown.map((sub) => sub.id) : [item.id]
+    );
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const mostVisible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (mostVisible) setActive(mostVisible.target.id);
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <nav className="navbar" ref={navRef}>
       <div className="navbar__left">
@@ -62,7 +88,12 @@ export default function Navbar({ activeId = "about", onNavigate }) {
         {NAV_ITEMS.map((item) => (
           <div className="navbar__item-wrapper" key={item.id}>
             <button
-              className={active === item.id ? "active" : ""}
+              className={
+                active === item.id ||
+                item.dropdown?.some((sub) => sub.id === active)
+                  ? "active"
+                  : ""
+              }
               onClick={() => handleClick(item)}
             >
               {item.label}

@@ -163,6 +163,6 @@ code {
   .games::before,
   .products::before,
   .certifications::before {
-    animation: shard-drift 20s ease-in-out infinite;
+    animation: shard-drift 60s ease-in-out infinite;
   }
 }

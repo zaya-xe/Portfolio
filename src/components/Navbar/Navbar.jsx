@@ -20,6 +20,7 @@ export default function Navbar({ activeId = "about", onNavigate }) {
   const [active, setActive] = useState(activeId);
   const [openDropdown, setOpenDropdown] = useState(null);
   const navRef = useRef(null);
+  const triggerRefs = useRef({});
 
   const handleClick = (item) => {
     if (item.dropdown) {
@@ -51,6 +52,19 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
+
+  // close dropdown on Escape and return focus to its trigger
+  useEffect(() => {
+    if (!openDropdown) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setOpenDropdown(null);
+        triggerRefs.current[openDropdown]?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [openDropdown]);
 
   // keep the highlighted nav item in sync with whichever section is
   // actually in view while scrolling, instead of only updating on click
@@ -88,6 +102,7 @@ export default function Navbar({ activeId = "about", onNavigate }) {
         {NAV_ITEMS.map((item) => (
           <div className="navbar__item-wrapper" key={item.id}>
             <button
+              ref={(el) => (triggerRefs.current[item.id] = el)}
               className={
                 active === item.id ||
                 item.dropdown?.some((sub) => sub.id === active)
@@ -95,6 +110,11 @@ export default function Navbar({ activeId = "about", onNavigate }) {
                   : ""
               }
               onClick={() => handleClick(item)}
+              {...(item.dropdown && {
+                "aria-haspopup": "true",
+                "aria-expanded": openDropdown === item.id,
+                "aria-controls": `navbar-dropdown-${item.id}`,
+              })}
             >
               {item.label}
               {item.hasCaret && (
@@ -112,7 +132,10 @@ export default function Navbar({ activeId = "about", onNavigate }) {
             </button>
 
             {item.dropdown && openDropdown === item.id && (
-              <div className="navbar__dropdown">
+              <div
+                className="navbar__dropdown"
+                id={`navbar-dropdown-${item.id}`}
+              >
                 {item.dropdown.map((subItem) => (
                   <button
                     key={subItem.id}

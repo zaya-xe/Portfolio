@@ -40,6 +40,7 @@ export default function Games() {
   const [activeIndex, setActiveIndex] = useState(0);
   const wrapperRef = useRef(null);
   const tickingRef = useRef(false);
+  const navRefs = useRef([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,6 +82,32 @@ export default function Games() {
     window.scrollTo({ top: targetScrollY, behavior: "smooth" });
   };
 
+  // roving tabindex: arrow keys move focus + selection between nav items,
+  // matching the WAI-ARIA tabs pattern for a vertical tablist
+  const handleNavKeyDown = (event, index) => {
+    let nextIndex;
+    switch (event.key) {
+      case "ArrowDown":
+        nextIndex = (index + 1) % GAMES.length;
+        break;
+      case "ArrowUp":
+        nextIndex = (index - 1 + GAMES.length) % GAMES.length;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = GAMES.length - 1;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    setActiveIndex(nextIndex);
+    scrollToIndex(nextIndex);
+    navRefs.current[nextIndex]?.focus();
+  };
+
   return (
     <div
       className="games-scroll-wrapper"
@@ -96,7 +123,12 @@ export default function Games() {
         <div className="games__layout">
         <div className="games__nav-column">
             <h2 className="games__heading">Games</h2>
-            <div className="games__nav">
+            <div
+              className="games__nav"
+              role="tablist"
+              aria-orientation="vertical"
+              aria-label="Games"
+            >
             <div className="games__nav-line" />
             <div
                 className="games__nav-indicator"
@@ -105,8 +137,18 @@ export default function Games() {
             {GAMES.map((game, index) => (
                 <button
                 key={game.id}
+                ref={(el) => (navRefs.current[index] = el)}
+                id={`games-tab-${game.id}`}
+                role="tab"
+                aria-selected={activeIndex === index}
+                aria-controls={`games-panel-${game.id}`}
+                tabIndex={activeIndex === index ? 0 : -1}
                 className={`games__nav-item ${activeIndex === index ? "active" : ""}`}
-                onClick={() => scrollToIndex(index)}
+                onClick={() => {
+                  setActiveIndex(index);
+                  scrollToIndex(index);
+                }}
+                onKeyDown={(event) => handleNavKeyDown(event, index)}
                 >
                 {game.title}
                 </button>
@@ -121,6 +163,9 @@ export default function Games() {
                   activeIndex === index ? "active" : ""
                 }`}
                 key={game.id}
+                id={`games-panel-${game.id}`}
+                role="tabpanel"
+                aria-labelledby={`games-tab-${game.id}`}
               >
                 <h3 className="games__panel-title">{game.title}</h3>
 

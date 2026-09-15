@@ -84,6 +84,7 @@ export default function Certifications() {
                 opacity: distance > 3 ? 0 : 1 - distance * 0.22,
                 zIndex: 10 - distance,
               }}
+              aria-hidden={offset !== 0}
             >
               <img src={cert.image} alt={`${cert.title} certificate`} />
             </div>
@@ -102,7 +103,7 @@ export default function Certifications() {
           </svg>
         </button>
 
-        <div className="certifications__label">
+        <div className="certifications__label" aria-live="polite" aria-atomic="true">
           <p className="certifications__title">{CERTIFICATIONS[activeIndex].title}</p>
           <p className="certifications__org">{CERTIFICATIONS[activeIndex].org}</p>
         </div>

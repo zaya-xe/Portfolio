@@ -39,6 +39,7 @@ export default function Products() {
   const [activeIndex, setActiveIndex] = useState(0);
   const wrapperRef = useRef(null);
   const tickingRef = useRef(false);
+  const navRefs = useRef([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,6 +81,32 @@ export default function Products() {
     window.scrollTo({ top: targetScrollY, behavior: "smooth" });
   };
 
+  // roving tabindex: arrow keys move focus + selection between nav items,
+  // matching the WAI-ARIA tabs pattern for a vertical tablist
+  const handleNavKeyDown = (event, index) => {
+    let nextIndex;
+    switch (event.key) {
+      case "ArrowDown":
+        nextIndex = (index + 1) % PRODUCTS.length;
+        break;
+      case "ArrowUp":
+        nextIndex = (index - 1 + PRODUCTS.length) % PRODUCTS.length;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = PRODUCTS.length - 1;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    setActiveIndex(nextIndex);
+    scrollToIndex(nextIndex);
+    navRefs.current[nextIndex]?.focus();
+  };
+
   return (
     <div
       className="products-scroll-wrapper"
@@ -94,7 +121,12 @@ export default function Products() {
         <div className="products__layout">
           <div className="products__nav-column">
             <h2 className="products__heading">Products</h2>
-            <div className="products__nav">
+            <div
+              className="products__nav"
+              role="tablist"
+              aria-orientation="vertical"
+              aria-label="Products"
+            >
               <div className="products__nav-line" />
               <div
                 className="products__nav-indicator"
@@ -103,10 +135,20 @@ export default function Products() {
               {PRODUCTS.map((product, index) => (
                 <button
                   key={product.id}
+                  ref={(el) => (navRefs.current[index] = el)}
+                  id={`products-tab-${product.id}`}
+                  role="tab"
+                  aria-selected={activeIndex === index}
+                  aria-controls={`products-panel-${product.id}`}
+                  tabIndex={activeIndex === index ? 0 : -1}
                   className={`products__nav-item ${
                     activeIndex === index ? "active" : ""
                   }`}
-                  onClick={() => scrollToIndex(index)}
+                  onClick={() => {
+                    setActiveIndex(index);
+                    scrollToIndex(index);
+                  }}
+                  onKeyDown={(event) => handleNavKeyDown(event, index)}
                 >
                   {product.title}
                 </button>
@@ -121,6 +163,9 @@ export default function Products() {
                   activeIndex === index ? "active" : ""
                 }`}
                 key={product.id}
+                id={`products-panel-${product.id}`}
+                role="tabpanel"
+                aria-labelledby={`products-tab-${product.id}`}
               >
                 <h3 className="products__panel-title">{product.title}</h3>
 

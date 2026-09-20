@@ -1,7 +1,7 @@
 import "./Home.scss";
 import Navbar from "../components/Navbar/Navbar";
-import shardsBG from "../assets/shardsBG.svg";
 import Hero from "../components/Hero/Hero";
+import ShardBurst from "../components/Hero/ShardBurst";
 import Games from "../components/Games/Games";
 import Products from "../components/Products/Products";
 import MobileBlock from "../components/MobileBlock/MobileBlock";
@@ -14,7 +14,8 @@ export default function Home() {
       <MobileBlock />
 
     <div className="portfolio-container">
-      <div className="page-bg" style={{ "--bg-image": `url(${shardsBG})` }}>
+      <div className="page-bg">
+        <ShardBurst />
         <div className="navbar-container">
           <Navbar />
         </div>

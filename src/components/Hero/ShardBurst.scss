@@ -1,0 +1,43 @@
+.shard-burst {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shard-burst__canvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1960 / 1044;
+}
+
+.shard-burst__item {
+  position: absolute;
+  height: auto;
+  display: block;
+  transform: none;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shard-burst__item {
+    animation: shard-burst-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes shard-burst-in {
+  0% {
+    transform: translate(var(--burst-x), var(--burst-y)) rotate(var(--burst-rot)) scale(0.9);
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}

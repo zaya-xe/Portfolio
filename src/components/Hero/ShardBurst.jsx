@@ -1,13 +1,13 @@
 import "./ShardBurst.scss";
-import shard1 from "../../assets/ind_shards/1.svg";
-import shard2 from "../../assets/ind_shards/2.svg";
-import shard3 from "../../assets/ind_shards/3.svg";
-import shard4 from "../../assets/ind_shards/4.svg";
-import shard5 from "../../assets/ind_shards/5.svg";
-import shard6 from "../../assets/ind_shards/6.svg";
-import shard7 from "../../assets/ind_shards/7.svg";
-import shard8 from "../../assets/ind_shards/8.svg";
-import shard9 from "../../assets/ind_shards/9.svg";
+import shard1 from "../../assets/ind_shards/1.png";
+import shard2 from "../../assets/ind_shards/2.png";
+import shard3 from "../../assets/ind_shards/3.png";
+import shard4 from "../../assets/ind_shards/4.png";
+import shard5 from "../../assets/ind_shards/5.png";
+import shard6 from "../../assets/ind_shards/6.png";
+import shard7 from "../../assets/ind_shards/7.png";
+import shard8 from "../../assets/ind_shards/8.png";
+import shard9 from "../../assets/ind_shards/9.png";
 
 // left/top/width are % of the original 1960x1044 artwork, found by matching
 // each shard's own vector path against the full composite — so stacked at

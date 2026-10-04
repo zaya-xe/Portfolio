@@ -117,9 +117,31 @@
 }
 
 @media (max-width: 700px) {
+  .certifications {
+    min-height: auto;
+    padding: 3.3333rem 1.3333rem;
+  }
+
   .certifications__track {
     max-width: 16.25rem;
     height: 12.5rem;
+  }
+
+  // arrows scale down visually with the desktop rem system's root-size
+  // swap, which puts them under the 44px minimum touch-target size
+  .certifications__arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .certifications__controls {
+    max-width: 100%;
+  }
+
+  // reserve enough side padding for the now-larger arrows above so they
+  // don't overlap the title/org text
+  .certifications__label {
+    padding: 0 3.25rem;
   }
 
   .certifications__card:not(.is-active) {

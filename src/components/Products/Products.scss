@@ -178,12 +178,40 @@
 }
 
 @media (max-width: 900px) {
+  // the sticky-pinned, height:100vh crossfade only really works with room to
+  // spare — on a phone the address bar resizes the viewport mid-scroll and
+  // there isn't enough height to stack nav + image + copy without clipping,
+  // so mobile gets a normal flowing layout instead of the scroll-jacked one
+  .products-scroll-wrapper {
+    height: auto !important;
+  }
+
   .products {
+    position: static;
+    height: auto;
+    min-height: 100vh;
     padding: 3.75rem 1.5rem;
   }
 
   .products__layout {
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .products__stage {
+    flex: none;
+  }
+
+  .products__panel {
+    position: static;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+
+    &.active {
+      display: flex;
+    }
   }
 }

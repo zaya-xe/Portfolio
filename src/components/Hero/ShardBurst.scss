@@ -22,6 +22,17 @@
   opacity: 1;
 }
 
+@media (max-width: 900px) {
+  // locked to the desktop artwork's aspect ratio, the canvas is only ~190px
+  // tall on a phone-width screen, compressing every shard into a thin strip
+  // instead of scattering across the hero — give it real height instead
+  .shard-burst__canvas {
+    aspect-ratio: auto;
+    height: 65vh;
+    min-height: 26rem;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .shard-burst__item {
     animation: shard-burst-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;

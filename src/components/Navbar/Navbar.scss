@@ -13,7 +13,9 @@
   margin: 0 auto;
   background: #0000000f;
   backdrop-filter: blur(0.2222rem);
-  z-index: 10;
+  // above the mobile menu backdrop/panel (portalled to <body>, z-index 15/18)
+  // so the hamburger button stays clickable as a toggle while the panel is open
+  z-index: 25;
 }
 
 .navbar__left {
@@ -124,6 +126,54 @@
   }
 }
 
+// ---- Hamburger toggle (hidden on desktop; shown in the mobile breakpoint below) ----
+.navbar__hamburger {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3333rem;
+  width: 2.75rem; // 44px at 16px root — meets the minimum touch-target size
+  height: 2.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+.navbar__hamburger-bar {
+  display: block;
+  width: 1.5rem;
+  height: 0.125rem;
+  border-radius: 0.125rem;
+  background: v.$white;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+
+  &:nth-child(1).is-open {
+    transform: translateY(0.4375rem) rotate(45deg);
+  }
+
+  &:nth-child(2).is-open {
+    opacity: 0;
+  }
+
+  &:nth-child(3).is-open {
+    transform: translateY(-0.4375rem) rotate(-45deg);
+  }
+}
+
+// ---- Mobile menu backdrop + slide-in panel (mobile breakpoint only) ----
+.navbar__backdrop {
+  display: none;
+}
+
+.navbar__mobile-panel {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 1rem 1.25rem;
@@ -134,10 +184,103 @@
   }
 
   .navbar__right {
-    gap: 1.1rem;
+    display: none;
+  }
 
-    button {
-      font-size: 0.8rem;
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .navbar__mobile-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(80vw, 20rem);
+    padding: 6rem 1.5rem 2rem;
+    overflow-y: auto;
+    background: rgba(6, 7, 10, 0.98);
+    backdrop-filter: blur(0.875rem);
+    border-left: 0.0625rem solid rgba(255, 255, 255, 0.08);
+    z-index: 18;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
+
+    &.is-open {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .navbar__item-wrapper {
+      width: 100%;
+    }
+
+    // the base look for these buttons normally lives under .navbar__right
+    // button, which doesn't reach this portalled copy — restated here
+    > .navbar__item-wrapper > button {
+      display: flex;
+      align-items: center;
+      gap: 0.4444rem;
+      width: 100%;
+      min-height: 2.75rem; // 44px touch target
+      background: none;
+      border: none;
+      color: v.$white;
+      font-family: v.$font-body;
+      font-weight: 400;
+      cursor: pointer;
+      text-align: left;
+      justify-content: flex-start;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+
+      &:hover,
+      &.active {
+        color: v.$accent;
+      }
+    }
+
+    .navbar__dropdown--inline {
+      position: static;
+      display: flex;
+      background: none;
+      backdrop-filter: none;
+      border: none;
+      box-shadow: none;
+      padding: 0 0 0 1rem;
+      margin-top: 0.25rem;
+      min-width: 0;
+
+      .navbar__dropdown-link {
+        min-height: 2.5rem;
+        display: flex;
+        align-items: center;
+        font-size: 0.95rem;
+      }
     }
   }
 }

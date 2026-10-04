@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import "./Navbar.scss";
 
 const NAV_ITEMS = [
@@ -19,8 +20,11 @@ const NAV_ITEMS = [
 export default function Navbar({ activeId = "about", onNavigate }) {
   const [active, setActive] = useState(activeId);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef(null);
   const triggerRefs = useRef({});
+  const hamburgerRef = useRef(null);
+  const mobilePanelRef = useRef(null);
 
   const handleClick = (item) => {
     if (item.dropdown) {
@@ -29,6 +33,7 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     }
     setActive(item.id);
     setOpenDropdown(null);
+    setMobileOpen(false);
     if (onNavigate) onNavigate(item.id);
     const el = document.getElementById(item.id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -37,15 +42,25 @@ export default function Navbar({ activeId = "about", onNavigate }) {
   const handleDropdownItemClick = (subItem) => {
     setActive(subItem.id);
     setOpenDropdown(null);
+    setMobileOpen(false);
     if (onNavigate) onNavigate(subItem.id);
     const el = document.getElementById(subItem.id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  // close dropdown when clicking outside the navbar
+  const closeMobileMenu = () => {
+    setMobileOpen(false);
+    setOpenDropdown(null);
+    hamburgerRef.current?.focus();
+  };
+
+  // close dropdown when clicking outside the navbar (the mobile panel is
+  // portalled to <body>, so it's checked separately from navRef)
   useEffect(() => {
     const handleOutsideClick = (e) => {
-      if (navRef.current && !navRef.current.contains(e.target)) {
+      const inNav = navRef.current?.contains(e.target);
+      const inMobilePanel = mobilePanelRef.current?.contains(e.target);
+      if (!inNav && !inMobilePanel) {
         setOpenDropdown(null);
       }
     };
@@ -53,18 +68,38 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  // close dropdown on Escape and return focus to its trigger
+  // Escape closes whichever layer is open — the dropdown first (returning
+  // focus to its trigger, desktop or mobile, whichever is actually visible),
+  // otherwise the mobile menu itself (returning focus to the hamburger).
   useEffect(() => {
-    if (!openDropdown) return;
+    if (!openDropdown && !mobileOpen) return;
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
+      if (e.key !== "Escape") return;
+      if (openDropdown) {
+        const id = openDropdown;
         setOpenDropdown(null);
-        triggerRefs.current[openDropdown]?.focus();
+        triggerRefs.current[`desktop-${id}`]?.focus();
+        triggerRefs.current[`mobile-${id}`]?.focus();
+        return;
       }
+      closeMobileMenu();
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [openDropdown]);
+  }, [openDropdown, mobileOpen]);
+
+  // lock background scroll while the mobile menu is open, and move focus
+  // into the panel so keyboard users land somewhere sensible
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const firstFocusable = mobilePanelRef.current?.querySelector("button, a");
+    firstFocusable?.focus();
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [mobileOpen]);
 
   // keep the highlighted nav item in sync with whichever section is
   // actually in view while scrolling, instead of only updating on click
@@ -92,64 +127,109 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     return () => observer.disconnect();
   }, []);
 
+  // Rendered twice — once for the desktop row, once for the mobile panel —
+  // since the two need very different layouts (floating dropdown vs inline
+  // accordion). They share the same active/openDropdown state either way.
+  const renderNavItems = (variant) =>
+    NAV_ITEMS.map((item) => (
+      <div className="navbar__item-wrapper" key={item.id}>
+        <button
+          ref={(el) => (triggerRefs.current[`${variant}-${item.id}`] = el)}
+          className={
+            active === item.id ||
+            item.dropdown?.some((sub) => sub.id === active)
+              ? "active"
+              : ""
+          }
+          onClick={() => handleClick(item)}
+          {...(item.dropdown && {
+            "aria-haspopup": "true",
+            "aria-expanded": openDropdown === item.id,
+            "aria-controls": `navbar-dropdown-${variant}-${item.id}`,
+          })}
+        >
+          {item.label}
+          {item.hasCaret && (
+            <svg
+              className={`navbar__caret ${openDropdown === item.id ? "navbar__caret--open" : ""}`}
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
+        </button>
+
+        {item.dropdown && openDropdown === item.id && (
+          <div
+            className={
+              variant === "desktop"
+                ? "navbar__dropdown"
+                : "navbar__dropdown navbar__dropdown--inline"
+            }
+            id={`navbar-dropdown-${variant}-${item.id}`}
+          >
+            {item.dropdown.map((subItem) => (
+              <button
+                key={subItem.id}
+                className="navbar__dropdown-link"
+                onClick={() => handleDropdownItemClick(subItem)}
+              >
+                {subItem.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    ));
+
   return (
     <nav className="navbar" ref={navRef}>
       <div className="navbar__left">
         Mawrah Khan<span className="navbar__dot">.</span>
       </div>
 
-      <div className="navbar__right">
-        {NAV_ITEMS.map((item) => (
-          <div className="navbar__item-wrapper" key={item.id}>
-            <button
-              ref={(el) => (triggerRefs.current[item.id] = el)}
-              className={
-                active === item.id ||
-                item.dropdown?.some((sub) => sub.id === active)
-                  ? "active"
-                  : ""
-              }
-              onClick={() => handleClick(item)}
-              {...(item.dropdown && {
-                "aria-haspopup": "true",
-                "aria-expanded": openDropdown === item.id,
-                "aria-controls": `navbar-dropdown-${item.id}`,
-              })}
-            >
-              {item.label}
-              {item.hasCaret && (
-                <svg
-                  className={`navbar__caret ${openDropdown === item.id ? "navbar__caret--open" : ""}`}
-                  width="10"
-                  height="6"
-                  viewBox="0 0 10 6"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              )}
-            </button>
+      <div className="navbar__right">{renderNavItems("desktop")}</div>
 
-            {item.dropdown && openDropdown === item.id && (
-              <div
-                className="navbar__dropdown"
-                id={`navbar-dropdown-${item.id}`}
-              >
-                {item.dropdown.map((subItem) => (
-                  <button
-                    key={subItem.id}
-                    className="navbar__dropdown-link"
-                    onClick={() => handleDropdownItemClick(subItem)}
-                  >
-                    {subItem.label}
-                  </button>
-                ))}
-              </div>
-            )}
+      <button
+        ref={hamburgerRef}
+        type="button"
+        className="navbar__hamburger"
+        aria-label={mobileOpen ? "Close menu" : "Open menu"}
+        aria-expanded={mobileOpen}
+        aria-controls="navbar-mobile-panel"
+        onClick={() => setMobileOpen((open) => !open)}
+      >
+        <span className={`navbar__hamburger-bar ${mobileOpen ? "is-open" : ""}`} />
+        <span className={`navbar__hamburger-bar ${mobileOpen ? "is-open" : ""}`} />
+        <span className={`navbar__hamburger-bar ${mobileOpen ? "is-open" : ""}`} />
+      </button>
+
+      {createPortal(
+        <>
+          {/* portalled to <body>: .navbar has backdrop-filter, which creates
+              a new containing block for position:fixed descendants, so a
+              fixed panel nested inside it would anchor to the navbar's own
+              (much narrower) box instead of the viewport */}
+          <div
+            className={`navbar__backdrop ${mobileOpen ? "is-open" : ""}`}
+            onClick={closeMobileMenu}
+            aria-hidden="true"
+          />
+
+          <div
+            id="navbar-mobile-panel"
+            className={`navbar__mobile-panel ${mobileOpen ? "is-open" : ""}`}
+            ref={mobilePanelRef}
+          >
+            {renderNavItems("mobile")}
           </div>
-        ))}
-      </div>
+        </>,
+        document.body
+      )}
     </nav>
   );
 }

@@ -41,8 +41,14 @@ export default function Products() {
   const tickingRef = useRef(false);
   const navRefs = useRef([]);
 
+  // below 900px, Products renders as a normal flowing section (see
+  // Products.scss) instead of the sticky scroll-jacked crossfade, so none
+  // of the scroll-position math applies there
+  const isMobileLayout = () => window.matchMedia("(max-width: 900px)").matches;
+
   useEffect(() => {
     const handleScroll = () => {
+      if (isMobileLayout()) return;
       if (tickingRef.current) return;
       tickingRef.current = true;
 
@@ -74,6 +80,12 @@ export default function Products() {
   const scrollToIndex = (index) => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
+    if (isMobileLayout()) {
+      document
+        .getElementById("product")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const scrollableDistance = wrapper.offsetHeight - window.innerHeight;
     const targetProgress = index / PRODUCTS.length + 0.05;
     const targetScrollY =

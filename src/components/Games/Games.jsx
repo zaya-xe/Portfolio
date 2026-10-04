@@ -42,8 +42,14 @@ export default function Games() {
   const tickingRef = useRef(false);
   const navRefs = useRef([]);
 
+  // below 900px, Games renders as a normal flowing section (see Games.scss)
+  // instead of the sticky scroll-jacked crossfade, so none of the scroll-
+  // position math applies there
+  const isMobileLayout = () => window.matchMedia("(max-width: 900px)").matches;
+
   useEffect(() => {
     const handleScroll = () => {
+      if (isMobileLayout()) return;
       if (tickingRef.current) return;
       tickingRef.current = true;
 
@@ -75,6 +81,14 @@ export default function Games() {
   const scrollToIndex = (index) => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
+    if (isMobileLayout()) {
+      // no scroll-jacking on mobile — just bring the section into view,
+      // the active panel switch itself is handled by state
+      document
+        .getElementById("games")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const scrollableDistance = wrapper.offsetHeight - window.innerHeight;
     const targetProgress = index / GAMES.length + 0.05; // nudge into that panel's range
     const targetScrollY =

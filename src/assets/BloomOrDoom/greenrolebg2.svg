@@ -1,0 +1,44 @@
+<svg width="372" height="178" viewBox="0 0 372 178" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_dig_1667_109)">
+<rect width="320" height="126" transform="matrix(-1 0 0 1 342 22)" fill="url(#paint0_radial_1667_109)" fill-opacity="0.1" shape-rendering="crispEdges"/>
+<rect x="1" y="-1" width="322" height="128" transform="matrix(-1 0 0 1 344 22)" stroke="url(#paint1_linear_1667_109)" stroke-width="2" shape-rendering="crispEdges"/>
+</g>
+<defs>
+<filter id="filter0_dig_1667_109" x="0" y="0" width="372" height="178" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feMorphology radius="2" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_1667_109"/>
+<feOffset dx="4" dy="4"/>
+<feGaussianBlur stdDeviation="11"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1667_109"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1667_109" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="22" dy="14"/>
+<feGaussianBlur stdDeviation="17.75"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.156863 0 0 0 0 0.592157 0 0 0 0 1 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_1667_109"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.012500000186264515 0.012500000186264515" numOctaves="3" seed="8651" />
+<feDisplacementMap in="effect2_innerShadow_1667_109" scale="8.6000003814697266" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect3_texture_1667_109">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+<radialGradient id="paint0_radial_1667_109" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 63) rotate(90) scale(63 160)">
+<stop/>
+<stop offset="1" stop-color="#A1FE72" stop-opacity="0.8"/>
+</radialGradient>
+<linearGradient id="paint1_linear_1667_109" x1="0" y1="0" x2="87.7892" y2="221.498" gradientUnits="userSpaceOnUse">
+<stop stop-color="#438621"/>
+<stop offset="0.120192" stop-color="#9BAF92"/>
+<stop offset="0.235577" stop-color="#245F19"/>
+<stop offset="0.413362" stop-color="#F1FFE7"/>
+<stop offset="0.610577" stop-color="#315415"/>
+<stop offset="0.793269" stop-color="#819C6F"/>
+<stop offset="0.886068" stop-color="#80EF36"/>
+<stop offset="0.953526" stop-color="#539D21"/>
+</linearGradient>
+</defs>
+</svg>

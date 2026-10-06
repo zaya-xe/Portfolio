@@ -162,6 +162,13 @@
   margin-bottom: 2rem;
 }
 
+.games__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8889rem;
+}
+
 .games__case-study-btn {
   display: inline-flex;
   align-items: center;
@@ -181,6 +188,14 @@
 
   &:hover {
     transform: scale(1.04);
+  }
+
+  // outlined variant for the secondary action beside the primary button
+  &--secondary {
+    background: transparent;
+    color: v.$accent;
+    // inset ring instead of a border so it's exactly the primary's size
+    box-shadow: inset 0 0 0 0.0556rem v.$accent;
   }
 }
 

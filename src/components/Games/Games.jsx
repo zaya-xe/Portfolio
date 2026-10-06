@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Games.scss";
 import shardsBG2 from "../../assets/shardsBG2.svg";
 import chess2 from "../../assets/chess2.svg";
@@ -14,6 +15,7 @@ const GAMES = [
       "Bloom or Doom is a 3-day game jam project, featured in the 'Games and Animation Digest' by Kingston University. The objective of the 2-player game is to balance the Sun and Moon to save a dying planet, handle mishaps and use the NFC power-up to your advantage.",
     docUrl: "https://drive.google.com/drive/folders/1wQc11dHf73zuvE_fBKyDMFg2GIVGWanl?usp=drive_link",
     buttonLabel: "Download APK",
+    caseStudyPath: "/case-studies/bloom-or-doom",
   },
   {
     id: "chess-2-0",
@@ -192,29 +194,43 @@ export default function Games() {
                   {game.description}
                 </p>
 
-                <a
-                  className="games__case-study-btn"
-                  href={game.docUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {game.buttonLabel}
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    aria-hidden="true"
+                <div className="games__actions">
+                  {game.caseStudyPath && (
+                    <Link
+                      className="games__case-study-btn"
+                      to={game.caseStudyPath}
+                    >
+                      View case study
+                    </Link>
+                  )}
+
+                  {/* with a case study to open, the download is the secondary action */}
+                  <a
+                    className={`games__case-study-btn${
+                      game.caseStudyPath ? " games__case-study-btn--secondary" : ""
+                    }`}
+                    href={game.docUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <path
-                      d="M3 11L11 3M11 3H5M11 3V9"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </a>
+                    {game.buttonLabel}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M3 11L11 3M11 3H5M11 3V9"
+                        stroke="currentColor"
+                        strokeWidth="1.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </div>
               </div>
             ))}

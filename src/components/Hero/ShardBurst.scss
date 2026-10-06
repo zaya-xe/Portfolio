@@ -14,10 +14,17 @@
   aspect-ratio: 1960 / 1044;
 }
 
-.shard-burst__item {
+// positions and sizes the shard, and carries the ambient float
+.shard-burst__float {
   position: absolute;
-  height: auto;
   display: block;
+}
+
+// the shard image itself, which plays the one-off burst-in on load
+.shard-burst__item {
+  display: block;
+  width: 100%;
+  height: auto;
   transform: none;
   opacity: 1;
 }
@@ -36,6 +43,11 @@
 @media (prefers-reduced-motion: no-preference) {
   .shard-burst__item {
     animation: shard-burst-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  // `shard-float` is defined in index.css (shared with the Bloom or Doom page)
+  .shard-burst__float {
+    animation: shard-float var(--dur) ease-in-out var(--delay) infinite;
   }
 }
 

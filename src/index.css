@@ -158,6 +158,25 @@ code {
   }
 }
 
+/* Gentle per-shard float, shared by the home page shards and the Bloom or Doom
+   page shards so they move identically. Driven by custom properties on the
+   element: --dx / --dy (how far it wanders) and --rot (how much it turns).
+   A loose loop rather than back-and-forth: out along (dx, dy), then swinging
+   the other way past the start before coming home. */
+@keyframes shard-float {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
+  }
+  66% {
+    transform: translate(calc(var(--dx) * -0.45), calc(var(--dy) * 0.8))
+      rotate(calc(var(--rot) * -0.6));
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .page-bg::before,
   .games::before,

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 
 const NAV_ITEMS = [
@@ -25,6 +26,22 @@ export default function Navbar({ activeId = "about", onNavigate }) {
   const triggerRefs = useRef({});
   const hamburgerRef = useRef(null);
   const mobilePanelRef = useRef(null);
+  const navigate = useNavigate();
+
+  // On the home page the section is right there; anywhere else (e.g. a case
+  // study page) there's nothing to scroll to, so go home and let Home scroll.
+  const goToSection = (id) => {
+    const el = document.getElementById(id);
+    if (!el) {
+      navigate("/", { state: { scrollTo: id } });
+    } else if (id === "about") {
+      // the navbar sits above the hero section, so scrolling to the section
+      // itself would push the navbar off screen — go to the real top instead
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleClick = (item) => {
     if (item.dropdown) {
@@ -35,8 +52,7 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     setOpenDropdown(null);
     setMobileOpen(false);
     if (onNavigate) onNavigate(item.id);
-    const el = document.getElementById(item.id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    goToSection(item.id);
   };
 
   const handleDropdownItemClick = (subItem) => {
@@ -44,8 +60,7 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     setOpenDropdown(null);
     setMobileOpen(false);
     if (onNavigate) onNavigate(subItem.id);
-    const el = document.getElementById(subItem.id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    goToSection(subItem.id);
   };
 
   const closeMobileMenu = () => {

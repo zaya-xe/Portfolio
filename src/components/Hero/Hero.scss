@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 2.2222rem;
+  padding: 40px;
 }
 
 .hero__copy {
@@ -42,7 +42,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4444rem;
-  padding: 0.6667rem 1.7778rem;
+  padding: 12px 32px;
   border-radius: 0.2222rem;
   border: 0.0556rem solid #B6B6B6;
   background: #72A6FE;
@@ -140,7 +140,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.6667rem;
-  padding: 0 1.3333rem;
+  padding: 0 24px;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
@@ -150,7 +150,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 1.5556rem;
+  padding: 0 28px;
   margin: 0;
   font-family: v.$font-body;
   font-size: 0.7778rem;
@@ -191,7 +191,7 @@
   margin-left: -2.2222rem;
   margin-right: -2.2222rem;
   margin-top: 2.6667rem;
-  padding: 1.7778rem 4.4444rem;
+  padding: 32px 80px;
   background-color: #000;
   border-top: 0.0556rem solid v.$border-accent;
   border-bottom: 0.0556rem solid v.$border-accent;
@@ -270,7 +270,7 @@
 
 @media (max-width: 900px) {
   .hero {
-    padding: 7rem 1.5rem 3rem;
+    padding: 112px 24px 48px;
   }
 
   .hero__copy {
@@ -288,7 +288,7 @@
     gap: 1.25rem;
     margin-left: -1.5rem;
     margin-right: -1.5rem;
-    padding: 1.5rem 1.75rem;
+    padding: 24px 28px;
   }
 
   .hero__a11y-title {
@@ -354,6 +354,6 @@
 
   .role-card__description {
     font-size: 0.6875rem;
-    padding: 0 0.8889rem;
+    padding: 0 14px;
   }
 }

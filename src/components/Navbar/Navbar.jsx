@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 
 const NAV_ITEMS = [
@@ -61,6 +61,19 @@ export default function Navbar({ activeId = "about", onNavigate }) {
     setMobileOpen(false);
     if (onNavigate) onNavigate(subItem.id);
     goToSection(subItem.id);
+  };
+
+  // The logo goes to the very start of the home page. From another page the
+  // link navigates there (Home scrolls to the top on arrival); when already on
+  // the home page there's nothing to navigate to, so just scroll up.
+  const handleLogoClick = (event) => {
+    setOpenDropdown(null);
+    setMobileOpen(false);
+    if (document.getElementById("about")) {
+      event.preventDefault();
+      setActive("about");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const closeMobileMenu = () => {
@@ -203,9 +216,15 @@ export default function Navbar({ activeId = "about", onNavigate }) {
 
   return (
     <nav className="navbar" ref={navRef}>
-      <div className="navbar__left">
+      <Link
+        to="/"
+        state={{ scrollTo: "about" }}
+        className="navbar__left"
+        aria-label="Mawrah Khan, back to the start of the home page"
+        onClick={handleLogoClick}
+      >
         Mawrah Khan<span className="navbar__dot">.</span>
-      </div>
+      </Link>
 
       <div className="navbar__right">{renderNavItems("desktop")}</div>
 

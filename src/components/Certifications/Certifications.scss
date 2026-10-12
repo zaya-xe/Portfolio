@@ -4,7 +4,7 @@
   position: relative;
   z-index: 0; // NEW — forces a local stacking context so ::before (z-index: -1) stays contained here, not behind the whole page
   min-height: 100vh;
-  padding: 5.5556rem 2.2222rem;
+  padding: 100px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,7 +98,7 @@
 .certifications__label {
   text-align: center;
   width: 100%;
-  padding: 0 2.2222rem;
+  padding: 0 40px;
 }
 
 .certifications__title {
@@ -119,7 +119,7 @@
 @media (max-width: 700px) {
   .certifications {
     min-height: auto;
-    padding: 3.3333rem 1.3333rem;
+    padding: 54px 22px;
   }
 
   .certifications__track {
@@ -141,7 +141,7 @@
   // reserve enough side padding for the now-larger arrows above so they
   // don't overlap the title/org text
   .certifications__label {
-    padding: 0 3.25rem;
+    padding: 0 52px;
   }
 
   .certifications__card:not(.is-active) {

@@ -10,6 +10,12 @@
     --poster-color: transparent;
     // the focus ring is kept: this is a keyboard-operable control
     outline-offset: 0.25rem;
+
+    // invisible until the model has loaded, so the planet doesn't just pop in
+    // (the intro in PlanetViewer.jsx then fades and grows it into view)
+    &.is-hidden {
+      opacity: 0;
+    }
   }
 }
 

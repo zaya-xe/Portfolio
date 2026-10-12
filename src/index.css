@@ -101,6 +101,11 @@ p {
   margin: 0;
 }
 
+/* even paddings: the browser default for a button is 1px 6px, and 1px is odd */
+button {
+  padding: 2px 6px;
+}
+
 code,
 .counter {
   font-family: var(--mono);
@@ -112,7 +117,7 @@ code,
 code {
   font-size: 0.8333rem;
   line-height: 135%;
-  padding: 0.2222rem 0.4444rem;
+  padding: 4px 8px;
   background: var(--code-bg);
 }
 

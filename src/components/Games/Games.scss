@@ -9,7 +9,7 @@
   top: 0;
   z-index: 0; // forces a local stacking context so ::before (z-index: -1) stays contained here, not behind the whole page
   height: 100vh;
-  padding: 5.5556rem 4.4444rem;
+  padding: 100px 80px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -38,7 +38,7 @@
   align-self: center;
   flex-direction: column;
   gap: 1.7778rem;
-  padding-left: 1.5556rem;
+  padding-left: 28px;
 }
 
 .games__nav-line {
@@ -174,7 +174,7 @@
   align-items: center;
   align-self: flex-start;
   gap: 0.4444rem;
-  padding: 0.6667rem 1.5556rem;
+  padding: 12px 28px;
   border-radius: 0.2222rem;
   background: v.$accent;
   color: #000;
@@ -212,7 +212,7 @@
     position: static;
     height: auto;
     min-height: 100vh;
-    padding: 3.75rem 1.5rem;
+    padding: 60px 24px;
   }
 
   .games__layout {

@@ -1,0 +1,20 @@
+.floating-shards {
+  position: absolute;
+  inset: 0;
+  // sits behind the content; the page wrapper makes its own stacking context
+  // so this stays inside it
+  z-index: -1;
+  pointer-events: none;
+}
+
+.floating-shards__item {
+  position: absolute;
+  display: block;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .floating-shards__item {
+    animation: shard-float var(--dur) ease-in-out var(--delay) infinite;
+  }
+}

@@ -1,0 +1,165 @@
+@use "../../styles/variables" as v;
+
+.artefact {
+  margin: 0;
+}
+
+.artefact__open {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0.0556rem solid v.$border;
+  border-radius: v.$radius-sm;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: zoom-in;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &:focus-visible {
+    outline: 0.1111rem solid v.$accent;
+    outline-offset: 4px;
+  }
+}
+
+.artefact__hint {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(0, 1, 1, 0.78);
+  border: 0.0556rem solid v.$border-accent;
+  font-family: v.$font-body;
+  font-size: 0.7222rem;
+  line-height: 1.4;
+  color: v.$white;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.artefact__open:hover .artefact__hint,
+.artefact__open:focus-visible .artefact__hint {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .artefact__open {
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: scale(1.015);
+      border-color: v.$border-accent;
+      box-shadow: 0 0.6667rem 1.6667rem rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.artefact__caption {
+  margin-top: 12px;
+  text-align: center;
+  font-family: v.$font-body;
+  font-size: 0.7778rem;
+  line-height: 1.4;
+  // lighter than the site's muted grey so captions stay above AA contrast on
+  // the brightest part of the Nudge page's purple glow
+  color: #bcc1cd;
+}
+
+// ---- Enlarged view ----
+.artefact__dialog {
+  width: min(94vw, 96rem);
+  max-width: none;
+  max-height: 92vh;
+  margin: auto;
+  padding: 0;
+  border: 0.0556rem solid v.$border-accent;
+  border-radius: v.$radius-sm;
+  background: rgba(4, 6, 12, 0.98);
+  color: v.$white;
+  overflow: hidden;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.82);
+  }
+}
+
+// The scrolling area starts 16px below the close button (it sits 12px from the
+// top and is 48px tall), so the scrollbar never runs underneath it.
+.artefact__scroller {
+  margin-top: 76px;
+  max-height: calc(92vh - 76px);
+  overflow: auto;
+  padding: 0 24px 24px;
+
+  &:focus-visible {
+    outline: 0.1111rem solid v.$accent;
+    outline-offset: -4px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // A slim blue line for a scrollbar: a 10px lane whose 3px transparent borders
+  // leave a 4px thumb. (Chrome, Edge and Safari use these pseudo-elements;
+  // Firefox gets the standard properties below.)
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background: v.$accent;
+    background-clip: padding-box;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #a6c8ff;
+    background-clip: padding-box;
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-width: thin;
+    scrollbar-color: v.$accent transparent;
+  }
+}
+
+.artefact__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0.0556rem solid v.$border-accent;
+  border-radius: 50%;
+  background: rgba(0, 1, 1, 0.85);
+  color: v.$white;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(114, 166, 254, 0.2);
+  }
+
+  &:focus-visible {
+    outline: 0.1111rem solid v.$white;
+    outline-offset: 2px;
+  }
+}

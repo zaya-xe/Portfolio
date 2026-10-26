@@ -166,7 +166,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.8889rem;
+  // 40px between the buttons side by side; if they wrap (on a phone) the rows
+  // sit closer together
+  gap: 16px 40px;
 }
 
 .games__case-study-btn {

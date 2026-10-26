@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Products.scss";
 import shardsBG3 from "../../assets/shardsBG3.svg";
 import steamRevamp from "../../assets/steamRevamp.png";
@@ -12,8 +13,7 @@ const PRODUCTS = [
     image: nudgeAI,
     description:
       "Nudge is a Figma co-pilot which assists designers and explores how integrated, context-aware support within the design environment can improve learning, enhance usability, and enable users to work more confidently and efficiently without relying heavily on external guidance.",
-    docUrl: "https://www.figma.com/design/KDdRueDzm6EBXPduJvEve6/K2461416_UX-in-Emerging-Technology?node-id=0-1&t=uINIiH080hhk7wiM-1",
-    buttonLabel: "View Project",
+    caseStudyPath: "/case-studies/nudge-ai",
   },
   {
     id: "steam-revamp",
@@ -190,29 +190,45 @@ export default function Products() {
                     {product.description}
                   </p>
 
-                  <a
-                    className="products__case-study-btn"
-                    href={product.docUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {product.buttonLabel}
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M3 11L11 3M11 3H5M11 3V9"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
+                  <div className="products__actions">
+                    {product.caseStudyPath && (
+                      <Link
+                        className="products__case-study-btn"
+                        to={product.caseStudyPath}
+                      >
+                        View Case Study
+                      </Link>
+                    )}
+
+                    {/* only entries with an external project link show it (Nudge AI has just its case study button) */}
+                    {product.docUrl && (
+                      <a
+                        className={`products__case-study-btn${
+                          product.caseStudyPath ? " products__case-study-btn--secondary" : ""
+                        }`}
+                        href={product.docUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {product.buttonLabel}
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          fill="none"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M3 11L11 3M11 3H5M11 3V9"
+                            stroke="currentColor"
+                            strokeWidth="1.6"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

@@ -200,7 +200,7 @@ export default function Games() {
                       className="games__case-study-btn"
                       to={game.caseStudyPath}
                     >
-                      View case study
+                      View Case Study
                     </Link>
                   )}
 

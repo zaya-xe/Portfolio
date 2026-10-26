@@ -1,0 +1,19 @@
+# Exported by three-d-stage
+newmtl felt
+Kd 0.0176 0.0561 0.0423
+Ks 0.2000 0.2000 0.2000
+Ns 10
+d 1.0000
+
+newmtl ebony
+Kd 0.0137 0.0423 0.0497
+Ks 0.2000 0.2000 0.2000
+Ns 124
+d 1.0000
+
+newmtl ebony_trim
+Kd 0.1590 0.3419 0.3916
+Ks 0.2000 0.2000 0.2000
+Ns 120
+d 1.0000
+

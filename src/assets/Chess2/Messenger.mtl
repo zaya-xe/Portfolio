@@ -1,0 +1,19 @@
+# Exported by three-d-stage
+newmtl felt
+Kd 0.0176 0.0561 0.0423
+Ks 0.2000 0.2000 0.2000
+Ns 10
+d 1.0000
+
+newmtl ivory
+Kd 0.7913 0.8632 0.8879
+Ks 0.2000 0.2000 0.2000
+Ns 136
+d 1.0000
+
+newmtl ivory_accent
+Kd 0.3864 0.5841 0.6514
+Ks 0.2000 0.2000 0.2000
+Ns 120
+d 1.0000
+

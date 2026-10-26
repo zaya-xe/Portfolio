@@ -73,7 +73,8 @@
   border: none;
   background: linear-gradient(135deg, v.$accent, #4a5fd6);
   box-shadow: 0.2222rem 0.2222rem 1rem 0.6667rem #8bb9ff2c;
-  color: v.$white;
+  // black, like the text and arrows on the site's other blue buttons
+  color: #000;
   cursor: pointer;
   transition: transform 0.15s ease, opacity 0.2s ease;
 
